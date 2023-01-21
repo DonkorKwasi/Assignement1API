@@ -15,13 +15,14 @@ const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv').config(); 
 const app = express();
+var HTTP_PORT =8080;
 app.use(cors());
 app.use(express.json());
 const MoviesDB = require("./modules/moviesDB.js");
 const db = new MoviesDB();
 db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
-    app.listen(process.env.PORT, ()=>{
-        console.log(`server listening on: ${process.env.PORT}`);
+    app.listen(HTTP_PORT, ()=>{
+        console.log(`server listening on: ${HTTP_PORT}`);
     });
 }).catch((err)=>{
     console.log(err);
