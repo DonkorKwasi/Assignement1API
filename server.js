@@ -20,8 +20,8 @@ app.use(express.json());
 const MoviesDB = require("./modules/moviesDB.js");
 const db = new MoviesDB();
 db.initialize(process.env.MONGODB_CONN_STRING).then(()=>{
-    app.listen(HTTP_PORT, ()=>{
-        console.log(`server listening on: ${HTTP_PORT}`);
+    app.listen(process.env.PORT, ()=>{
+        console.log(`server listening on: ${process.env.PORT}`);
     });
 }).catch((err)=>{
     console.log(err);
